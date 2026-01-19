@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="p-4"><a href="index.html" class="text-blue-600">← Back to Courses</a></nav>
+
+    <main class="max-w-4xl mx-auto p-6">
+        <h1 id="course-title" class="text-3xl font-bold mb-6 text-gray-800 text-center">Loading Course...</h1>
+
+        <div id="player-gate" class="aspect-video bg-black rounded-xl shadow-2xl flex items-center justify-center overflow-hidden">
+            <div class="text-center p-8">
+                <p class="text-white mb-4">You don't have access to this course yet.</p>
+                <a id="buy-link" href="#" class="bg-yellow-500 text-black font-bold px-8 py-3 rounded-full hover:bg-yellow-400">Buy Now via Razorpay</a>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-bold mb-2">Course Description</h2>
+            <p id="course-desc" class="text-gray-600">Learn everything from scratch in this detailed modules...</p>
+        </div>
+    </main>
+
+    <script>
+        // Logic to get URL ID
+        const params = new URLSearchParams(window.location.search);
+        const courseId = params.get('id');
+
+        // Logic (Simulated for now)
+        const hasPaid = false; // This will be: db.collection('users').doc(uid).get()...
+
+        if (hasPaid) {
+            // Replace "VIDEO_ID" with actual YouTube ID from Firestore
+            document.getElementById('player-gate').innerHTML = `
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/VIDEO_ID?rel=0" frameborder="0" allowfullscreen></iframe>
+            `;
+        } else {
+            // Update the link to your Razorpay Payment Link
+            document.getElementById('buy-link').href = "https://rzp.io/l/your_payment_link_here";
+        }
+    </script>
+</body>
+</html>
