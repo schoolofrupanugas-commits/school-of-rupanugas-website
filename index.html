@@ -13,53 +13,271 @@
         .swiper-slide { background-position: center; background-size: cover; width: 300px; height: 400px; }
         .floating-btn { transition: transform 0.3s; }
         .floating-btn:hover { transform: scale(1.1); }
+        
+        /* 3D Shloka Card Styles */
+        .shloka-card-container {
+            perspective: 1200px;
+            margin-bottom: 2rem;
+        }
+        
+        .shloka-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(99, 102, 241, 0.5) 25%, rgba(139, 92, 246, 0.5) 50%, rgba(168, 85, 247, 0.5) 75%, rgba(59, 130, 246, 0.5) 100%);
+            position: relative;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 
+                0 0 60px rgba(99, 102, 241, 0.4),
+                0 20px 60px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            transform: rotateX(2deg) rotateY(-1deg) translateZ(0);
+            transition: transform 0.6s ease-out, box-shadow 0.6s ease-out;
+            border: 2px solid rgba(147, 197, 253, 0.5);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .shloka-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 144, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            border-radius: 20px;
+        }
+        
+        .shloka-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .shloka-card:hover {
+            transform: rotateX(5deg) rotateY(-2deg) translateZ(20px);
+            box-shadow: 
+                0 0 100px rgba(99, 102, 241, 0.6),
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .shloka-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+        }
+        
+        .shloka-text {
+            font-family: 'Georgia', 'Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+        
+        .shloka-line {
+            margin: 0.75rem 0;
+            font-style: italic;
+        }
+        
+        .shloka-reference {
+            font-size: 0.95rem;
+            color: #e0e7ff;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.3px;
+        }
+        
+        .decorative-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .shloka-card {
+                padding: 2rem 1.5rem;
+                min-height: 280px;
+            }
+            
+            .shloka-text {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .shloka-card {
+                padding: 1.5rem 1rem;
+                min-height: 250px;
+            }
+            
+            .shloka-text {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+        }
+        
+        /* Glassmorphism Navbar Styles */
+        .navbar-glass {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(139, 92, 246, 0.1) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(147, 197, 253, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        
+        .navbar-glass .nav-link {
+            color: #1f2937;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+        
+        .navbar-glass .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .navbar-glass .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-glass .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .navbar-glass .navbar-brand {
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-glass .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        
+        .navbar-glass .login-btn {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(99, 102, 241, 0.6) 100%);
+            border: 1px solid rgba(147, 197, 253, 0.4);
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+        
+        .navbar-glass .login-btn:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(99, 102, 241, 0.8) 100%);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .navbar-glass .mobile-menu {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(147, 197, 253, 0.3);
+        }
+        
+        .navbar-glass .menu-icon {
+            color: #1f2937;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-glass .menu-icon:hover {
+            color: #3b82f6;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="navbar-glass sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <div class="text-2xl font-bold text-orange-600">Rupanugas</div>
+                <div class="navbar-brand text-2xl font-bold">Rupanugas</div>
                 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="hover:text-orange-500">Home</a>
-                    <a href="#about" class="hover:text-orange-500">About Us</a>
-                    <a href="#courses" class="hover:text-orange-500">Courses</a>
-                    <a href="#reviews" class="hover:text-orange-500">Reviews</a>
-                    <a href="#contact" class="hover:text-orange-500">Contact</a>
-                    <button class="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700">Login</button>
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="courses.html" class="nav-link">Courses</a>
+                    <a href="#past-events" class="nav-link">Past Events</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="./log.html"><button class="login-btn px-6 py-2 rounded-full">Login</button></a>
                 </div>
 
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                        <i class="fa-solid fa-bars text-2xl menu-icon"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-4">
-            <a href="#home" class="block">Home</a>
-            <a href="#about" class="block">About Us</a>
-            <a href="#courses" class="block">Courses</a>
-            <a href="#reviews" class="block">Reviews</a>
-            <a href="#contact" class="block">Contact</a>
-            <button class="w-full bg-orange-600 text-white py-2 rounded">Login</button>
+        <div id="mobile-menu" class="hidden md:hidden mobile-menu border-t p-4 space-y-4">
+            <a href="#home" class="block nav-link">Home</a>
+            <a href="#about" class="block nav-link">About Us</a>
+            <a href="courses.html" class="block nav-link">Courses</a>
+            <a href="#past-events" class="block nav-link">Past Events</a>
+            <a href="#contact" class="block nav-link">Contact</a>
+            <a href="./log.html"><button class="w-full login-btn py-2 rounded">Login</button></a>
         </div>
     </nav>
 
     <section id="home" class="relative overflow-hidden bg-white py-20 lg:py-32">
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
             <div class="z-10">
-                <h1 class="text-5xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-                    Awaken Your <span class="text-orange-600">Spiritual</span> Journey
-                </h1>
-                <p class="mt-6 text-xl text-gray-600">
-                    Explore ancient wisdom through modern learning at the School of Rupanugas. 
-                    Our courses guide you through the heart of Vedic philosophy.
+                <div class="shloka-card-container">
+                    <div class="shloka-card">
+                        <div class="shloka-content">
+                            <div class="shloka-text">
+                                <div class="shloka-line">सिद्धान्तं बलिया चित्ते ना करा आलस्</div>
+                                <div class="decorative-divider"></div>
+                                <div class="shloka-line">इह हैते कृष्ण भक्ति सुदृढ़ मनस्</div>
+                            </div>
+                            <div class="shloka-reference">
+                                <div class="shloka-line">Śiddhaṅtaṁ baliyā chitte nā karā ālasa</div>
+                                <div class="decorative-divider"></div>
+                                <div class="shloka-line">Iha haite Kṛṣṇa bhakti sudṛḍa manas</div>
+                                <div class="shloka-line"><em>— Śrī Chaitanya Charitāmṛta (CC Ādi 2.118)</em></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-3xl lg:text-5xl font-extrabold text-gray-900 leading-tight mt-8 mb-6">
+                    Understand Philosophy of  <span class="text-orange-600">Krishna Consciousness</span> with us
+                </h2>
+                <p class="mt-4 text-lg text-gray-600">
+                    A sincere student should not neglect the discussion of such conclusions, considering them controversial, for such discussions strengthen the mind. Thus one’s mind becomes attached to Śrī Kṛṣṇa.
                 </p>
                 <div class="mt-10 flex gap-4">
-                    <a href="#courses" class="bg-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-orange-700 transition">Start Learning</a>
+                    <a href="courses.html" class="bg-orange-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-orange-700 transition">Start Learning</a>
                     <a href="#about" class="border-2 border-gray-200 px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition">Know More</a>
                 </div>
             </div>
@@ -97,12 +315,12 @@
         </div>
     </section>
 
-    <section id="reviews" class="py-20 max-w-7xl mx-auto px-4">
-        <h2 class="text-center text-4xl font-bold mb-10">Student Reflections</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <a href="#" class="p-6 bg-white border rounded shadow hover:shadow-lg transition">"Life changing experience..." - Google Reviews</a>
-            <a href="#" class="p-6 bg-white border rounded shadow hover:shadow-lg transition">"The depth of knowledge is amazing" - Trustpilot</a>
-            <a href="#" class="p-6 bg-white border rounded shadow hover:shadow-lg transition">"Found my inner peace here" - Facebook</a>
+    <section id="past-events" class="py-20 bg-orange-50">
+        <h2 class="text-center text-4xl font-bold mb-10">TTC Ahemdabad</h2>
+        <div class="swiper mySwiper2">
+            <div class="swiper-wrapper" id="event-images">
+                </div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -137,10 +355,10 @@
     </footer>
 
     <div class="fixed bottom-6 right-6 flex flex-col space-y-4 z-50">
-        <a href="https://wa.me/yournumber" class="floating-btn bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl">
+        <a href="https://wa.me/919068593465" class="floating-btn bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
-        <a href="tel:+9100000000" class="floating-btn bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl">
+        <a href="tel:+919068593465" class="floating-btn bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl">
             <i class="fa-solid fa-phone"></i>
         </a>
     </div>
@@ -205,8 +423,43 @@
                 </div>`;
         });
 
+        // Event Images
+        const events = [
+            { img: "./assets/TTC_1.jpeg" },
+            { img: "./assets/TTC_2.jpeg" },
+            { img: "./assets/TTC_3.jpeg" },
+            { img: "./assets/TTC_4.jpeg" },
+            { img: "./assets/TTC_5.jpeg" },
+        ];
+
+        // Render Event Images
+        const eventContainer = document.getElementById('event-images');
+        events.forEach(e => {
+            eventContainer.innerHTML += `
+                <div class="swiper-slide">
+                    <img src="${e.img}" class="w-full h-full object-cover rounded-xl">
+                </div>`;
+        });
+
         // Initialize 3D Swiper
         var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            autoplay: { delay: 3000 },
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: { el: ".swiper-pagination" },
+        });
+
+        // Initialize Events Swiper
+        var swiper2 = new Swiper(".mySwiper2", {
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,

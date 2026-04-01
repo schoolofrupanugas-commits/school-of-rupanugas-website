@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Portal - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="header">
+                <h2 id="auth-title">Welcome Back</h2>
+                <p id="auth-subtitle" class="subtitle">Access your learning dashboard</p>
+            </div>
+            
+            <div class="toggle-box">
+                <button id="toggle-login" class="toggle-btn active">Login</button>
+                <button id="toggle-signup" class="toggle-btn">Signup</button>
+            </div>
+
+            <form id="auth-form">
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email Address" required autocomplete="username">
+                    <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" id="main-submit" class="primary-btn">Continue to Course</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
